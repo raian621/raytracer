@@ -1,4 +1,7 @@
 #include "canvas.h"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 Canvas::Canvas(size_t width, size_t height)
   : _width(width), _height(height)
@@ -26,8 +29,8 @@ Canvas::Canvas(Canvas&& rhs)
 
 Canvas::~Canvas()
 {
-  for (int i = 0; i < _height; i++)
-    delete pixel_grid[i];
+  for (int i = 0; i < _width; i++)
+    delete[] pixel_grid[i];
   delete[] pixel_grid;
 }
 
@@ -55,7 +58,21 @@ uint32_t* Canvas::operator[](int col) const
 size_t Canvas::width() const { return _width; }
 size_t Canvas::height() const { return _height; }
 
-void Canvas::save_to_file(const char* path)
+void Canvas::save_to_file(const char* path, const char* filename)
 {
-  // TODO  
+  std::string fullPath(path);
+  fullPath.append("/");
+  fullPath.append(filename);
+
+  std::ofstream fout(fullPath);
+  fout << "P6\n";
+  fout << std::to_string(_width) << " " << std::to_string(_height);
+  fout << "\n255\n";
+  int numCount = 0;
+  for (int y = 0; y < _height; y++)
+    for (int x = 0; x < _width; x++)
+      for (int i = 16; i >= 0; i -= 8)
+        fout.put((char)(pixel_grid[x][y] >> i));
+
+  std::cout << "Image saved at " << fullPath << std::endl;
 }

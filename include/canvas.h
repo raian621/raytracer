@@ -19,7 +19,7 @@ class Canvas
     size_t width() const;
     size_t height() const;
 
-    void save_to_file(const char*);
+    void save_to_file(const char*, const char*);
 
   private:
     uint32_t** pixel_grid;
