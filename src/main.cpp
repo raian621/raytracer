@@ -2,17 +2,20 @@
 #include "color.h"
 #include "vector/vec2.h"
 #include "canvas.h"
+#include "matrix/mat4.h"
 
 int main()
 {
+  int width(2000), height(3000);
+  mat4 mat;
   color c1(1, 0.5, 0.25 );
   color c2 = clamp(c1 * 2);
   color c3(0, 0, 0);
-  Canvas canvas(300, 300);
+  Canvas canvas(width, height);
 
-  vec2 center = { canvas.width() / 2, canvas.width() / 2 };
+  vec2 center = { canvas.width() / 2, canvas.height() / 2 };
   vec2 coord;
-  float radius = 100.0f;
+  float radius = width * 0.4f;
 
   for(coord.x = 0; coord.x < canvas.width(); coord.x++)
     for (coord.y = 0; coord.y < canvas.height(); coord.y++)
