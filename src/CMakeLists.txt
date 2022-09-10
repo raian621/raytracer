@@ -6,4 +6,5 @@ target_sources(${PROJECT_NAME}
     PRIVATE vector/vec3.cpp
     PRIVATE vector/vec4.cpp
     PRIVATE canvas.cpp
+    PRIVATE color.cpp
 )
