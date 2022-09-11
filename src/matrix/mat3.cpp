@@ -3,7 +3,13 @@
 #define RANK 3
 #define ELEMENTS 9
 
-mat3::mat3() { matrix = new float[ELEMENTS]; }
+mat3::mat3() 
+{ 
+  matrix = new float[ELEMENTS]; 
+  for (int x = 0; x < RANK; x++)
+    for (int y = 0; y < RANK; y++)
+      (*this)[x][y] = (x == y ? 1 : 0); 
+}
 mat3::mat3(float mat[ELEMENTS])
 {
   matrix = new float[ELEMENTS];
@@ -47,6 +53,8 @@ mat3 mat3::transpose() const
 }
 mat3 mat3::inverse() const
 {
+  float det = determinant();
+  if (det == 0) return *this;
   mat3 result;
 
   for (int x = 0; x < RANK; x++)
@@ -60,7 +68,7 @@ mat3 mat3::inverse() const
     }
   }
 
-  return result / determinant();
+  return result / det;
 }
 float mat3::determinant() const
 {

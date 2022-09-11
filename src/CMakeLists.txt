@@ -10,4 +10,5 @@ target_sources(${PROJECT_NAME}
     PRIVATE matrix/mat4.cpp
     PRIVATE canvas.cpp
     PRIVATE color.cpp
+    PRIVATE matrix/transformations.cpp
 )

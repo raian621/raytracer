@@ -3,7 +3,13 @@
 #define RANK 2
 #define ELEMENTS 4
 
-mat2::mat2() { matrix = new float[ELEMENTS]; }
+mat2::mat2()
+{ 
+  matrix = new float[ELEMENTS]; 
+  for (int x = 0; x < RANK; x++)
+    for (int y = 0; y < RANK; y++)
+      (*this)[x][y] = (x == y ? 1 : 0);
+}
 mat2::mat2(float mat[ELEMENTS])
 {
   matrix = new float[ELEMENTS];
@@ -45,6 +51,8 @@ mat2 mat2::transpose() const
 }
 mat2 mat2::inverse() const
 {
+  float det = determinant();
+  if (det == 0) return *this;
   mat2 result;
   for (int x = 0; x < RANK; x++)
   {
@@ -56,7 +64,7 @@ mat2 mat2::inverse() const
         result[y][x] = (*this)[(x + 1) % 2][(y + 1) % 2];
     }
   }
-  return result / determinant();
+  return result / det;
 }
 float mat2::determinant() const
 {

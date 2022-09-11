@@ -3,7 +3,13 @@
 #define RANK 4
 #define ELEMENTS 16
 
-mat4::mat4() { matrix = new float[ELEMENTS]; }
+mat4::mat4()
+{ 
+  matrix = new float[ELEMENTS];
+  for (int x = 0; x < RANK; x++)
+    for (int y = 0; y < RANK; y++)
+      (*this)[x][y] = (x == y ? 1 : 0);
+}
 mat4::mat4(float mat[ELEMENTS])
 {
   matrix = new float[ELEMENTS];
