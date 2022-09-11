@@ -94,7 +94,23 @@ mat4 mat4::operator*(const mat4& m) const
   
   return result;
 }
-
+vec4 mat4::operator*(const vec4& vector) const
+{
+  return {
+    vector.x * ((*this)[0][0] + (*this)[0][1] + (*this)[0][2] + (*this)[0][3]),
+    vector.y * ((*this)[1][0] + (*this)[1][1] + (*this)[1][2] + (*this)[1][3]),
+    vector.z * ((*this)[2][0] + (*this)[2][1] + (*this)[2][2] + (*this)[2][3]),
+    vector.w * ((*this)[3][0] + (*this)[3][1] + (*this)[3][2] + (*this)[3][3])
+  };
+}
+vec3 mat4::operator*(const vec3& vector) const
+{
+  return {
+    vector.x * ((*this)[0][0] + (*this)[0][1] + (*this)[0][2] + (*this)[0][3]),
+    vector.y * ((*this)[1][0] + (*this)[1][1] + (*this)[1][2] + (*this)[1][3]),
+    vector.z * ((*this)[2][0] + (*this)[2][1] + (*this)[2][2] + (*this)[2][3]),
+  };
+}
 mat4 mat4::operator*(float n) const
 {
   mat4 result;

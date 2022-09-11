@@ -2,7 +2,7 @@
 #define MAT4_H
 
 #include "matrix/mat3.h"
-
+#include "vec4.h"
 class mat4
 {
   public:
@@ -21,6 +21,8 @@ class mat4
     float determinant() const;
 
     mat4 operator*(const mat4&) const;
+    vec4 operator*(const vec4&) const;
+    vec3 operator*(const vec3&) const;
     mat4 operator*(float) const;
     mat4 operator/(float) const;
     mat4 operator+(const mat4&) const;

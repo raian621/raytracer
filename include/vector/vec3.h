@@ -2,7 +2,6 @@
 #define VEC3_H
 
 #include <iostream>
-#include "matrix/mat4.h"
 struct vec3
 {
   float x, y, z;
@@ -16,7 +15,6 @@ struct vec3
   vec3 operator-(const vec3&) const;
   vec3 operator-() const;
   vec3 operator*(float) const;
-  vec3 operator*(const mat4&) const;
   vec3 operator/(float) const;
 
   vec3& operator+=(const vec3&);
