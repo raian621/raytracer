@@ -8,10 +8,10 @@ mat4 scale(float);
 mat4 scale_x(float);
 mat4 scale_y(float);
 mat4 scale_y(float);
-mat4 translation(float, float, float);
-mat4 rotation_x(float);
-mat4 rotation_y(float);
-mat4 rotation_z(float);
+mat4 translate(float, float, float);
+mat4 rotate_x(float);
+mat4 rotate_y(float);
+mat4 rotate_z(float);
 mat4 shear(float, float, float, float);
 
 #endif

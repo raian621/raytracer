@@ -80,6 +80,6 @@ vec3 cross_product(const vec4& v1, const vec4& v2) noexcept
 }
 std::ostream& operator<<(std::ostream& out, const vec4& v)
 {
-  return (out << '(' << v.x << ", " << v.y << ", " << v.z << ')');
+  return (out << '(' << v.x << ", " << v.y << ", " << v.z << ", " << v.w << ')');
 }
 vec4 operator*(float n, const vec4& v) { return v * n; }

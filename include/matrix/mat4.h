@@ -2,7 +2,7 @@
 #define MAT4_H
 
 #include "matrix/mat3.h"
-#include "vec4.h"
+#include "vector/vec4.h"
 class mat4
 {
   public:

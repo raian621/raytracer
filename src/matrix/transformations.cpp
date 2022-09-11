@@ -15,7 +15,7 @@ mat4 scale(float x, float y, float z)
 mat4 scale(float xyz) { return scale(xyz, xyz, xyz); }
 mat4 scale_x(float x) { return scale(x, 0, 0); }
 mat4 scale_y(float y) { return scale(0, y, 0); }
-mat4 scale_y(float z) { return scale(0, 0, z); }
+mat4 scale_z(float z) { return scale(0, 0, z); }
 mat4 translate(float x, float y, float z)
 {
   float matrix[] = {
@@ -41,10 +41,10 @@ mat4 rotate_x(float x)
 mat4 rotate_y(float y)
 {
   float matrix[] = {
-     cos(y),    0, sin(y), 0,
-     0,         1, 0,      0,
-    -sinf32(y), 0, cos(y), 0,
-     0,         0, 0,      1
+     cosf32(y), 0, sinf32(y), 0,
+     0,         1, 0,         0,
+    -sinf32(y), 0, sinf32(y), 0,
+     0,         0, 0,         1
   };
 
   return mat4(matrix);
