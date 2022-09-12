@@ -66,11 +66,11 @@ bool vec4::operator==(const vec4& v) const
   return x == v.x && y == v.y && z == v.z && w == v.w;
 }
 
-float dot_product(const vec4& v1, const vec4& v2) noexcept
+float dot(const vec4& v1, const vec4& v2) noexcept
 {
   return { v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w };
 }
-vec3 cross_product(const vec4& v1, const vec4& v2) noexcept
+vec3 cross(const vec4& v1, const vec4& v2) noexcept
 {
   return { 
     v1.y * v2.z - v1.z * v2.y, 

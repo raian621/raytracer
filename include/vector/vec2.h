@@ -26,7 +26,7 @@ struct vec2
   bool operator==(const vec2&) const;
 };
 
-float dot_product(const vec2&, const vec2&) noexcept;
+float dot(const vec2&, const vec2&) noexcept;
 std::ostream& operator<<(std::ostream&, const vec2&);
 vec2 operator*(float, const vec2&);
 

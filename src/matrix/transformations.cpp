@@ -13,9 +13,12 @@ mat4 scale(float x, float y, float z)
   return mat4(matrix);
 }
 mat4 scale(float xyz) { return scale(xyz, xyz, xyz); }
+mat4 scale(vec3 vector) { return scale(vector.x, vector.y, vector.z); }
+mat4 scale(vec4 vector) { return scale(vector.x, vector.y, vector.z); }
 mat4 scale_x(float x) { return scale(x, 0, 0); }
 mat4 scale_y(float y) { return scale(0, y, 0); }
 mat4 scale_z(float z) { return scale(0, 0, z); }
+
 mat4 translate(float x, float y, float z)
 {
   float matrix[] = {
@@ -27,6 +30,9 @@ mat4 translate(float x, float y, float z)
 
   return mat4(matrix);
 }
+mat4 translate(vec3 vector) { return translate(vector.x, vector.y, vector.z); }
+mat4 translate(vec4 vector) { return translate(vector.x, vector.y, vector.z); }
+
 mat4 rotate_x(float x)
 {
   float matrix[] = {
@@ -60,6 +66,7 @@ mat4 rotate_z(float z)
 
   return mat4(matrix);
 }
+
 mat4 shear(float xy, float xz, float yx, float yz, float zx, float zy)
 {
   float matrix[] = {

@@ -31,4 +31,5 @@ float dot_product(const color&, const color&) noexcept;
 color cross_product(const color&, const color&) noexcept;
 std::ostream& operator<<(std::ostream&, const color&);
 color operator*(float, const color&);
+
 #endif

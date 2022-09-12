@@ -25,8 +25,8 @@ struct vec3
   bool operator==(const vec3&) const;
 };
 
-float dot_product(const vec3&, const vec3&) noexcept;
-vec3 cross_product(const vec3&, const vec3&) noexcept;
+float dot(const vec3&, const vec3&) noexcept;
+vec3 cross(const vec3&, const vec3&) noexcept;
 std::ostream& operator<<(std::ostream&, const vec3&);
 vec3 operator*(float, const vec3&);
 

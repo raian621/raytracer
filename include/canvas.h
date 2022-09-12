@@ -7,7 +7,7 @@
 class Canvas
 {
   public:
-    Canvas(size_t, size_t);
+    Canvas(size_t width = 0, size_t height = 0);
     Canvas(const Canvas&);
     Canvas(Canvas&&);
     ~Canvas();
@@ -19,7 +19,7 @@ class Canvas
     size_t width() const;
     size_t height() const;
 
-    void save_to_file(const char*, const char*);
+    void save_to_file(const char*, const char*) const;
 
   private:
     uint32_t** pixel_grid;

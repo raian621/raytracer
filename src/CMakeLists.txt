@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 target_sources(${PROJECT_NAME} 
-    PRIVATE main.cpp
-    PRIVATE vector/vec2.cpp
-    PRIVATE vector/vec3.cpp
-    PRIVATE vector/vec4.cpp
-    PRIVATE matrix/mat2.cpp
-    PRIVATE matrix/mat3.cpp
-    PRIVATE matrix/mat4.cpp
-    PRIVATE canvas.cpp
-    PRIVATE color.cpp
-    PRIVATE matrix/transformations.cpp
+    PUBLIC vector/vec2.cpp
+    PUBLIC vector/vec3.cpp
+    PUBLIC vector/vec4.cpp
+    PUBLIC matrix/mat2.cpp
+    PUBLIC matrix/mat3.cpp
+    PUBLIC matrix/mat4.cpp
+    PUBLIC matrix/transformations.cpp
+    PUBLIC primitives/sphere.cpp
+    PUBLIC raytracer/ray.cpp
+    PUBLIC canvas.cpp
+    PUBLIC color.cpp
+    PUBLIC material.cpp
+    PUBLIC camera.cpp
+    PUBLIC scene.cpp
+    PUBLIC main.cpp
 )

@@ -58,7 +58,7 @@ uint32_t* Canvas::operator[](int col) const
 size_t Canvas::width() const { return _width; }
 size_t Canvas::height() const { return _height; }
 
-void Canvas::save_to_file(const char* path, const char* filename)
+void Canvas::save_to_file(const char* path, const char* filename) const
 {
   std::string fullPath(path);
   fullPath.append("/");
