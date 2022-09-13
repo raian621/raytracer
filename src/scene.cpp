@@ -2,5 +2,5 @@
 
 void Scene::add_sphere(Sphere* volume)
 {
-  spheres.push_back(*volume);
+  spheres.push_back(volume);
 }

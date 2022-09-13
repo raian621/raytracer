@@ -7,7 +7,7 @@
 class Scene
 {
   public:
-    std::vector<Sphere> spheres;
+    std::vector<Sphere*> spheres;
 
     Scene() {}
     void add_sphere(Sphere*);

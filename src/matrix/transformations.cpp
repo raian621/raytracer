@@ -1,5 +1,5 @@
 #include "matrix/transformations.h"
-#include <cmath>
+#include <math.h>
 
 mat4 scale(float x, float y, float z)
 {
@@ -13,8 +13,8 @@ mat4 scale(float x, float y, float z)
   return mat4(matrix);
 }
 mat4 scale(float xyz) { return scale(xyz, xyz, xyz); }
-mat4 scale(vec3 vector) { return scale(vector.x, vector.y, vector.z); }
-mat4 scale(vec4 vector) { return scale(vector.x, vector.y, vector.z); }
+mat4 scale(const vec3& vector) { return scale(vector.x, vector.y, vector.z); }
+mat4 scale(const vec4& vector) { return scale(vector.x, vector.y, vector.z); }
 mat4 scale_x(float x) { return scale(x, 0, 0); }
 mat4 scale_y(float y) { return scale(0, y, 0); }
 mat4 scale_z(float z) { return scale(0, 0, z); }
@@ -30,8 +30,8 @@ mat4 translate(float x, float y, float z)
 
   return mat4(matrix);
 }
-mat4 translate(vec3 vector) { return translate(vector.x, vector.y, vector.z); }
-mat4 translate(vec4 vector) { return translate(vector.x, vector.y, vector.z); }
+mat4 translate(const vec3& vector) { return translate(vector.x, vector.y, vector.z); }
+mat4 translate(const vec4& vector) { return translate(vector.x, vector.y, vector.z); }
 
 mat4 rotate_x(float x)
 {
@@ -49,7 +49,7 @@ mat4 rotate_y(float y)
   float matrix[] = {
      cosf32(y), 0, sinf32(y), 0,
      0,         1, 0,         0,
-    -sinf32(y), 0, sinf32(y), 0,
+    -sinf32(y), 0, cosf32(y), 0,
      0,         0, 0,         1
   };
 

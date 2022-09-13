@@ -1,7 +1,7 @@
 #include "raytracer/ray.h"
 #include "primitives/sphere.h"
+#include "matrix/transformations.h"
 #include <cmath>
-#include <iostream>
 
 SphereIntersection::SphereIntersection(float t, const Sphere* source)
   : Intersection(t)
@@ -40,6 +40,12 @@ color Ray::hit()
   sortIntersections();
   if (sphereIntersections.size() == 0)
     return color(0.3f, 0.3f, 0.3f);
-
-  return sphereIntersections.back().source->material.materialColor;
+  SphereIntersection si = sphereIntersections[0];
+  Sphere s = *si.source;
+  mat4 rotation = rotate_x(s.rotation.x) * rotate_y(s.rotation.y) * rotate_z(s.rotation.z);
+  vec3 normal = rotation * s.normal_at(
+    origin + si.t * direction
+  );
+  color color(normal.x / 2 + 0.5, normal.y / 2 + 0.5, normal.z / 2 + 0.5);
+  return color;
 }
