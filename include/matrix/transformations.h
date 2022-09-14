@@ -18,6 +18,7 @@ mat4 translate(const vec3&);
 mat4 rotate_x(float);
 mat4 rotate_y(float);
 mat4 rotate_z(float);
+mat4 rotate(const vec3&);
 
 mat4 shear(float, float, float, float);
 

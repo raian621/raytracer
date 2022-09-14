@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "vector/vec3.h"
+#include "matrix/mat4.h"
 #include "color.h"
 
 struct Sphere;
@@ -36,6 +37,7 @@ struct Ray
   Ray(const vec3&, const vec3&);
   void intersections(const Sphere*);
   void sortIntersections();
+  Ray transform(const mat4&);
   color hit();
 };
 

@@ -3,12 +3,6 @@
 #include "matrix/transformations.h"
 #include <cmath>
 
-SphereIntersection::SphereIntersection(float t, const Sphere* source)
-  : Intersection(t)
-{
-  this->source = source;
-}
-
 Intersection::Intersection(float t)
 {
   this->t = t;
@@ -19,6 +13,12 @@ bool Intersection::operator<=(const Intersection& i) { return this->t <= i.t; }
 bool Intersection::operator>=(const Intersection& i) { return this->t >= i.t; }
 bool Intersection::operator<(const Intersection& i) { return this->t > i.t; }
 bool Intersection::operator>(const Intersection& i) { return this->t > i.t; }
+
+SphereIntersection::SphereIntersection(float t, const Sphere* source)
+  : Intersection(t)
+{
+  this->source = source;
+}
 
 Ray::Ray(const vec3& origin, const vec3& direction)
 {
@@ -35,17 +35,22 @@ void Ray::sortIntersections()
     if (sphereIntersections[0] > sphereIntersections[i])
       std::swap(sphereIntersections[0], sphereIntersections[i]);
 }
+Ray Ray::transform(const mat4& transformation)
+{
+  return { transformation * origin, transformation * direction };
+}
 color Ray::hit()
 {
   sortIntersections();
   if (sphereIntersections.size() == 0)
     return color(0.3f, 0.3f, 0.3f);
+  
   SphereIntersection si = sphereIntersections[0];
   Sphere s = *si.source;
-  mat4 rotation = rotate_x(s.rotation.x) * rotate_y(s.rotation.y) * rotate_z(s.rotation.z);
-  vec3 normal = rotation * s.normal_at(
-    origin + si.t * direction
-  );
-  color color(normal.x / 2 + 0.5, normal.y / 2 + 0.5, normal.z / 2 + 0.5);
-  return color;
+  Ray localRay = transform(s.transform.inverse());
+
+  vec3 normal = s.normal_at(localRay.origin + localRay.direction * si.t);
+  color normalColor = { normal.x / 2.0 + 0.5, normal.y / 2.0 + 0.5, normal.z / 2.0 + 0.5 };
+  return normalColor;
+  // return sphereIntersections[0].source->material.materialColor;
 }

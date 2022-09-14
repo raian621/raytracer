@@ -67,6 +67,13 @@ mat4 rotate_z(float z)
   return mat4(matrix);
 }
 
+mat4 rotate(const vec3& rotation)
+{
+  return rotate_x(rotation.x)
+    * rotate_y(rotation.y)
+    * rotate_z(rotation.z);
+}
+
 mat4 shear(float xy, float xz, float yx, float yz, float zx, float zy)
 {
   float matrix[] = {
