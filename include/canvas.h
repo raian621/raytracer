@@ -6,6 +6,11 @@
 
 class Canvas
 {
+  private:
+    size_t _width;
+    size_t _height;
+    uint32_t** pixel_grid;
+
   public:
     Canvas(size_t width = 0, size_t height = 0);
     Canvas(const Canvas&);
@@ -20,11 +25,6 @@ class Canvas
     size_t height() const;
 
     void save_to_file(const char*, const char*) const;
-
-  private:
-    uint32_t** pixel_grid;
-    size_t _width;
-    size_t _height;
 };
 
 #endif

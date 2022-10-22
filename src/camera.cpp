@@ -26,7 +26,7 @@ void Camera::render() const
 
       vec3 rayOrigin = translate(right * canvasX) * translate(up * canvasY) * position;
       Ray r(rayOrigin, rayOrigin + direction * 100.0f);
-      for (int i = 0; i < scene.spheres.size(); i++)
+      for (size_t i = 0; i < scene.spheres.size(); i++)
         r.intersections(scene.spheres[i]);
       canvas[x][y] = r.hit().int_rgb();
     }

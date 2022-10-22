@@ -4,7 +4,12 @@
 #include <iostream>
 struct vec3
 {
-  float x, y, z;
+  union
+  {
+    struct { float x, y, z; };
+    struct { float s, t, p; };
+    struct { float r, g, b; };
+  };
 
   vec3(float x = 0, float y = 0, float z = 0);
 

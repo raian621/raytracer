@@ -7,15 +7,15 @@ Canvas::Canvas(size_t width, size_t height)
   : _width(width), _height(height)
 {
   pixel_grid = new uint32_t*[_width];
-  for (int i = 0; i < _width; i++)
+  for (size_t i = 0; i < _width; i++)
     pixel_grid[i] = new uint32_t[_height];
 }
 
 Canvas::Canvas(const Canvas& rhs)
   : Canvas(rhs._width, rhs._height)
 {
-  for (int x = 0; x < _width; x++)
-    for (int y = 0; y < _height; y++)
+  for (size_t x = 0; x < _width; x++)
+    for (size_t y = 0; y < _height; y++)
       pixel_grid[x][y] = rhs[x][y];
 }
 
@@ -29,7 +29,7 @@ Canvas::Canvas(Canvas&& rhs)
 
 Canvas::~Canvas()
 {
-  for (int i = 0; i < _width; i++)
+  for (size_t i = 0; i < _width; i++)
     delete[] pixel_grid[i];
   delete[] pixel_grid;
 }
@@ -68,10 +68,9 @@ void Canvas::save_to_file(const char* path, const char* filename) const
   fout << "P6\n";
   fout << std::to_string(_width) << " " << std::to_string(_height);
   fout << "\n255\n";
-  int numCount = 0;
-  for (int y = 0; y < _height; y++)
-    for (int x = 0; x < _width; x++)
-      for (int i = 16; i >= 0; i -= 8)
+  for (size_t y = 0; y < _height; y++)
+    for (size_t x = 0; x < _width; x++)
+      for (size_t i = 16; i >= 0; i -= 8)
         fout.put((char)(pixel_grid[x][y] >> i));
 
   std::cout << "Image saved at " << fullPath << std::endl;

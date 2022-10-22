@@ -179,7 +179,7 @@ mat3 mat4::submatrix(int xn, int yn) const
 mat4 operator*(float n, const mat4& m) { return m * n; }
 std::ostream& operator<<(std::ostream& out, const mat4& m)
 {
-  int maxLengths[] = { 0, 0, 0, 0 };
+  size_t maxLengths[] = { 0, 0, 0, 0 };
   std::string values[ELEMENTS];
 
   for (int y = 0; y < RANK; y++)
@@ -200,14 +200,16 @@ std::ostream& operator<<(std::ostream& out, const mat4& m)
       out << "| ";
 
     out << values[i];
-    for (int j = values[i].length(); j < maxLengths[i % RANK] + 1; j++)
+    for (size_t j = values[i].length(); j < maxLengths[i % RANK] + 1; j++)
       out << ' ';
 
     if (i % RANK == RANK - 1)
+    {
       if (i < ELEMENTS)
         out << "|\n";
       else
         out << "|";
+    }
   }
 
   return out;

@@ -31,7 +31,7 @@ void Ray::intersections(const Sphere* volume)
 }
 void Ray::sortIntersections()
 {
-  for (int i = 1; i < sphereIntersections.size(); i++)
+  for (size_t i = 1; i < sphereIntersections.size(); i++)
     if (sphereIntersections[0] > sphereIntersections[i])
       std::swap(sphereIntersections[0], sphereIntersections[i]);
 }
@@ -50,7 +50,7 @@ color Ray::hit()
   Ray localRay = transform(s.transform.inverse());
 
   vec3 normal = s.normal_at(localRay.origin + localRay.direction * si.t);
-  color normalColor = { normal.x / 2.0 + 0.5, normal.y / 2.0 + 0.5, normal.z / 2.0 + 0.5 };
+  color normalColor = { normal.x / 2.0f + 0.5f, normal.y / 2.0f + 0.5f, normal.z / 2.0f + 0.5f };
   return normalColor;
   // return sphereIntersections[0].source->material.materialColor;
 }

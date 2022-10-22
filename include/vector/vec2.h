@@ -5,7 +5,11 @@
 
 struct vec2
 {
-  float x, y;
+  union
+  {
+    struct { float x, y; };
+    struct { float s, t; };
+  };
 
   vec2(float x = 0, float y = 0);
 
