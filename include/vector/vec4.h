@@ -32,7 +32,7 @@ struct vec4
 };
 
 float dot(const vec4&, const vec4&) noexcept;
-vec3 cross(const vec4&, const vec4&) noexcept;
+vec4 cross(const vec4&, const vec4&) noexcept;
 std::ostream& operator<<(std::ostream&, const vec4&);
 vec4 operator*(float, const vec4&);
 

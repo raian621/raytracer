@@ -53,11 +53,13 @@ mat4 mat4::transpose() const
 }
 mat4 mat4::inverse() const
 {
+  float det = determinant();
+  if (det == 0) return *this;
   mat4 result;
   
-  for (int x = 0; x < RANK; x++)
+  for (int y = 0; y < RANK; y++)
   {
-    for (int y = 0; y < RANK; y++)
+    for (int x = 0; x < RANK; x++)
     {
       if ((x + y) % 2)
         result[y][x] = -(submatrix(x, y).determinant());
@@ -65,7 +67,7 @@ mat4 mat4::inverse() const
         result[y][x] = submatrix(x, y).determinant();
     }
   }
-  return result / determinant();
+  return result / det;
 }
 float mat4::determinant() const
 {
@@ -160,7 +162,6 @@ mat4 mat4::operator/=(float n) { return *this = *this / n; }
 mat4 mat4::operator+=(const mat4& m) { return *this = *this + m; }
 mat4 mat4::operator-=(const mat4& m) { return *this = *this - m; }
 
-
 mat3 mat4::submatrix(int xn, int yn) const
 {
   mat3 result;
@@ -173,6 +174,7 @@ mat3 mat4::submatrix(int xn, int yn) const
       result[x][y] = (*this)[x + dx][y + dy];
     }
   }
+
   return result;
 }
 

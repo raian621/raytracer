@@ -156,7 +156,6 @@ mat2 mat3::submatrix(int xn, int yn) const
     {
       int dx = (x < xn ? 0 : 1);
       int dy = (y < yn ? 0 : 1);
-
       result[x][y] = (*this)[x + dx][y + dy];
     }
   }
